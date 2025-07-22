@@ -4,11 +4,9 @@ import nodemailer from 'nodemailer'
 // Environment variables validation
 const EMAIL_USER = process.env.EMAIL_USER
 const EMAIL_PASSWORD = process.env.EMAIL_PASSWORD
-const EMAIL_FROM_NAME = process.env.EMAIL_FROM_NAME || 'KGS Sigorta'
-const EMAIL_TO_ADMIN = process.env.EMAIL_TO_ADMIN
 
-if (!EMAIL_USER || !EMAIL_PASSWORD || !EMAIL_TO_ADMIN) {
-  throw new Error('Missing required environment variables: EMAIL_USER, EMAIL_PASSWORD, EMAIL_TO_ADMIN')
+if (!EMAIL_USER || !EMAIL_PASSWORD) {
+  throw new Error('Missing required environment variables: EMAIL_USER, EMAIL_PASSWORD')
 }
 
 // Gmail SMTP yapılandırması
@@ -311,7 +309,7 @@ const getAdminEmailTemplate = (formData: any) => {
   }
 
   const insuranceTypeName = insuranceTypeMap[formData.insuranceType] || formData.insuranceType
-  const companyName = EMAIL_FROM_NAME || 'KGS Sigorta'
+  const companyName = 'KGS Sigorta'
 
   return `
     <!DOCTYPE html>
@@ -511,11 +509,10 @@ const getAdminEmailTemplate = (formData: any) => {
 export async function POST(request: NextRequest) {
   try {
     // Environment variables kontrolü
-    if (!EMAIL_USER || !EMAIL_PASSWORD || !EMAIL_TO_ADMIN) {
+    if (!EMAIL_USER || !EMAIL_PASSWORD) {
       console.error('Missing environment variables:', {
         EMAIL_USER: !!EMAIL_USER,
-        EMAIL_PASSWORD: !!EMAIL_PASSWORD,
-        EMAIL_TO_ADMIN: !!EMAIL_TO_ADMIN
+        EMAIL_PASSWORD: !!EMAIL_PASSWORD
       })
       return NextResponse.json(
         { 
@@ -562,7 +559,7 @@ export async function POST(request: NextRequest) {
 
     // Müşteriye teşekkür e-postası gönder
     const customerMailOptions = {
-      from: `"${EMAIL_FROM_NAME}" <${EMAIL_USER}>`,
+      from: `"KGS Sigorta" <${EMAIL_USER}>`,
       to: email,
       subject: '✅ Mesajınızı Aldık - KGS Sigorta Teklif Talebi',
       html: getEmailTemplate(formData),
@@ -570,8 +567,8 @@ export async function POST(request: NextRequest) {
 
     // Admin'e bildirim e-postası gönder
     const adminMailOptions = {
-      from: `"${EMAIL_FROM_NAME} Web Sitesi" <${EMAIL_USER}>`,
-      to: EMAIL_TO_ADMIN,
+      from: `"KGS Sigorta Web Sitesi" <${EMAIL_USER}>`,
+      to: EMAIL_USER, // Aynı adrese gönder
       subject: `🚨 YENİ TEKLİF TALEBİ - ${firstName} ${lastName} (${insuranceTypeName})`,
       html: getAdminEmailTemplate(formData),
     }
