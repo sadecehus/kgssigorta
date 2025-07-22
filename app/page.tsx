@@ -895,7 +895,7 @@ export default function KGSInsurancePage() {
                         <div>
                           <h4 className="text-red-800 font-semibold">Bir hata oluştu!</h4>
                           <p className="text-red-700 text-sm mt-1">
-                            Mesajınız gönderilemedi. Lütfen tekrar deneyin veya WhatsApp ile iletişime geçin.
+                            Mesajınız gönderilemedi. Lütfen tekrar deneyin veya WhatsApp ile iletişime geçin...
                           </p>
                         </div>
                       </div>
