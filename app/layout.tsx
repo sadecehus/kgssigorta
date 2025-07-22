@@ -25,7 +25,12 @@ export const metadata: Metadata = {
     title: "KGS SİGORTA",
     description: "İzmit Kocaeli'nin güvenilir sigorta aracısı",
   },
-    generator: 'v0.dev'
+    generator: 'Hüseyin Kocatürk',
+    icons: {
+      icon: "/favicon.ico",
+      apple: "/apple-touch-icon.png",
+      shortcut: "/favicon-32x32.png",
+    }
 }
 
 export default function RootLayout({
