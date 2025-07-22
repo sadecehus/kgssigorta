@@ -25,3 +25,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+EMAIL_SETUP.md
+VERCEL_DEPLOYMENT.md

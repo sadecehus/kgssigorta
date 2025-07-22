@@ -1,12 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
+// Environment variables validation
+const EMAIL_USER = process.env.EMAIL_USER
+const EMAIL_PASSWORD = process.env.EMAIL_PASSWORD
+const EMAIL_FROM_NAME = process.env.EMAIL_FROM_NAME || 'KGS Sigorta'
+const EMAIL_TO_ADMIN = process.env.EMAIL_TO_ADMIN
+
+if (!EMAIL_USER || !EMAIL_PASSWORD || !EMAIL_TO_ADMIN) {
+  throw new Error('Missing required environment variables: EMAIL_USER, EMAIL_PASSWORD, EMAIL_TO_ADMIN')
+}
+
 // Gmail SMTP yapılandırması
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'info@kgssigorta.com',
-    pass: 'yfbrtkogrreualwh', // Uygulama şifresi
+    user: EMAIL_USER,
+    pass: EMAIL_PASSWORD,
   },
 })
 
@@ -24,6 +34,7 @@ const getEmailTemplate = (formData: any) => {
   }
 
   const insuranceTypeName = insuranceTypeMap[formData.insuranceType] || formData.insuranceType
+  const companyEmail = EMAIL_USER || 'info@kgssigorta.com'
 
   return `
     <!DOCTYPE html>
@@ -255,7 +266,7 @@ const getEmailTemplate = (formData: any) => {
             </div>
             <div class="contact-item">
               <span class="contact-icon">✉️</span>
-              <span><strong>E-posta:</strong> info@kgssigorta.com</span>
+              <span><strong>E-posta:</strong> ${companyEmail}</span>
             </div>
             <div class="contact-item">
               <span class="contact-icon">📍</span>
@@ -277,7 +288,7 @@ const getEmailTemplate = (formData: any) => {
           <div class="footer-links">
             <a href="tel:+905535574541">Bizi Arayın</a>
             <a href="https://wa.me/905535574541">WhatsApp</a>
-            <a href="mailto:info@kgssigorta.com">E-posta</a>
+            <a href="mailto:${companyEmail}">E-posta</a>
           </div>
         </div>
       </div>
@@ -300,6 +311,7 @@ const getAdminEmailTemplate = (formData: any) => {
   }
 
   const insuranceTypeName = insuranceTypeMap[formData.insuranceType] || formData.insuranceType
+  const companyName = EMAIL_FROM_NAME || 'KGS Sigorta'
 
   return `
     <!DOCTYPE html>
@@ -430,7 +442,7 @@ const getAdminEmailTemplate = (formData: any) => {
       <div class="container">
         <div class="header">
           <div class="logo">🚨 YENİ TEKLİF TALEBİ</div>
-          <p style="margin: 0; opacity: 0.9;">KGS Sigorta Admin Panel</p>
+          <p style="margin: 0; opacity: 0.9;">${companyName} Admin Panel</p>
         </div>
         
         <div class="content">
@@ -488,7 +500,7 @@ const getAdminEmailTemplate = (formData: any) => {
         </div>
         
         <div class="footer">
-          Bu e-posta KGS Sigorta web sitesinden otomatik olarak gönderilmiştir.
+          Bu e-posta ${companyName} web sitesinden otomatik olarak gönderilmiştir.
         </div>
       </div>
     </body>
@@ -498,6 +510,22 @@ const getAdminEmailTemplate = (formData: any) => {
 
 export async function POST(request: NextRequest) {
   try {
+    // Environment variables kontrolü
+    if (!EMAIL_USER || !EMAIL_PASSWORD || !EMAIL_TO_ADMIN) {
+      console.error('Missing environment variables:', {
+        EMAIL_USER: !!EMAIL_USER,
+        EMAIL_PASSWORD: !!EMAIL_PASSWORD,
+        EMAIL_TO_ADMIN: !!EMAIL_TO_ADMIN
+      })
+      return NextResponse.json(
+        { 
+          error: 'Server yapılandırma hatası. Lütfen site yöneticisiyle iletişime geçin.',
+          details: 'Email environment variables are not configured'
+        },
+        { status: 500 }
+      )
+    }
+
     const formData = await request.json()
     
     // Form verilerini doğrula
@@ -506,6 +534,15 @@ export async function POST(request: NextRequest) {
     if (!firstName || !lastName || !phone || !email || !insuranceType) {
       return NextResponse.json(
         { error: 'Gerekli alanlar eksik' },
+        { status: 400 }
+      )
+    }
+
+    // Email format kontrolü
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { error: 'Geçerli bir e-posta adresi girin' },
         { status: 400 }
       )
     }
@@ -525,10 +562,7 @@ export async function POST(request: NextRequest) {
 
     // Müşteriye teşekkür e-postası gönder
     const customerMailOptions = {
-      from: {
-        name: 'KGS Sigorta',
-        address: 'info@kgssigorta.com'
-      },
+      from: `"${EMAIL_FROM_NAME}" <${EMAIL_USER}>`,
       to: email,
       subject: '✅ Mesajınızı Aldık - KGS Sigorta Teklif Talebi',
       html: getEmailTemplate(formData),
@@ -536,11 +570,8 @@ export async function POST(request: NextRequest) {
 
     // Admin'e bildirim e-postası gönder
     const adminMailOptions = {
-      from: {
-        name: 'KGS Sigorta Web Sitesi',
-        address: 'info@kgssigorta.com'
-      },
-      to: 'info@kgssigorta.com',
+      from: `"${EMAIL_FROM_NAME} Web Sitesi" <${EMAIL_USER}>`,
+      to: EMAIL_TO_ADMIN,
       subject: `🚨 YENİ TEKLİF TALEBİ - ${firstName} ${lastName} (${insuranceTypeName})`,
       html: getAdminEmailTemplate(formData),
     }
