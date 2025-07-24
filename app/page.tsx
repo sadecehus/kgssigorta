@@ -497,7 +497,7 @@ export default function KGSInsurancePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
             {/* Sompo Services */}
             <Card className="group hover:shadow-xl transition-all duration-300 border border-gray-200 shadow-lg hover:scale-105 bg-white flex flex-col h-full">
@@ -645,7 +645,7 @@ export default function KGSInsurancePage() {
             </Card>
 
             {/* Orient Services */}
-            <Card className="group hover:shadow-xl transition-all duration-300 border border-gray-200 shadow-lg hover:scale-105 bg-white flex flex-col h-full">
+            {/* <Card className="group hover:shadow-xl transition-all duration-300 border border-gray-200 shadow-lg hover:scale-105 bg-white flex flex-col h-full">
               <CardHeader className="text-center pb-4">
                 <div className="mx-auto w-20 h-16 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Image
@@ -716,7 +716,7 @@ export default function KGSInsurancePage() {
                   </DialogContent>
                 </Dialog>
               </CardContent>
-            </Card>
+            </Card> */}
 
             
           </div>
@@ -731,7 +731,7 @@ export default function KGSInsurancePage() {
             <p className="text-xl text-gray-600 mb-8">En iyi teklif için sizin adınıza karşılaştırma yaparız</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="text-center group">
               <div className="bg-gray-50 border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-all duration-300 group-hover:scale-105">
                 <div className="w-32 h-24 mx-auto mb-4 flex items-center justify-center">
@@ -748,7 +748,7 @@ export default function KGSInsurancePage() {
               </div>
             </div>
 
-            <div className="text-center group">
+            {/* <div className="text-center group">
               <div className="bg-gray-50 border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-all duration-300 group-hover:scale-105">
                 <div className="w-32 h-24 mx-auto mb-4 flex items-center justify-center">
                   <Image
@@ -762,7 +762,7 @@ export default function KGSInsurancePage() {
                 <h3 className="text-2xl font-bold text-[#0a2d5f] mb-2">Orient</h3>
                 <p className="text-gray-600">Kapsamlı koruma planları</p>
               </div>
-            </div>
+            </div> */}
 
             <div className="text-center group">
               <div className="bg-gray-50 border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-all duration-300 group-hover:scale-105">
