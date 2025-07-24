@@ -11,7 +11,7 @@ const nunitoSans = Nunito_Sans({
 export const metadata: Metadata = {
   title: "KGS SİGORTA – Araç, Sağlık, Konut Sigortaları | İzmit Kocaeli",
   description:
-    "KGS Sigorta - İzmit Kocaeli'nin güvenilir sigorta aracısı. Hepiyi, Orient ve Sompo Sigorta ile çalışarak size en uygun teklifi sunuyoruz. Araç, sağlık ve konut sigortaları için hemen teklif alın.",
+    "KGS Sigorta - İzmit Kocaeli'nin güvenilir sigorta aracısı. , Türkiye'nin en iyi Sigorta şirketleri ile çalışarak size en uygun teklifi sunuyoruz. Araç, sağlık ve konut sigortaları için hemen teklif alın.",
   keywords:
     "KGS Sigorta, İzmit sigorta, Kocaeli sigorta, kasko, trafik, sağlık sigortası, konut sigortası, DASK, sigorta aracısı, Hepiyi, Orient, Sompo",
   openGraph: {

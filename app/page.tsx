@@ -443,7 +443,7 @@ export default function KGSInsurancePage() {
             <h1 className="text-5xl md:text-7xl font-bold mb-4 text-[#0a2d5f]">KGS SİGORTA</h1>
             <p className="text-xl md:text-2xl mb-2 text-gray-700">Türkiye'nin Güvenilir Sigorta Aracısı</p>
             <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-              Hepiyi, Orient ve Sompo Sigorta ile çalışarak size en uygun teklifi sunuyoruz
+              Türkiye'nin en iyi sigorta şirketleri ile çalışarak size en uygun teklifi sunuyoruz
             </p>
           </div>
 
@@ -498,6 +498,80 @@ export default function KGSInsurancePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            {/* Sompo Services */}
+            <Card className="group hover:shadow-xl transition-all duration-300 border border-gray-200 shadow-lg hover:scale-105 bg-white flex flex-col h-full">
+              <CardHeader className="text-center pb-4">
+                <div className="mx-auto w-20 h-16 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Image
+                    src="/images/sompo-logo.png"
+                    alt="Sompo Sigorta Logo"
+                    width={80}
+                    height={64}
+                    className="max-w-full max-h-full object-contain"
+                  />
+                </div>
+                <CardTitle className="text-2xl text-[#0a2d5f]">Sompo Sigortaları</CardTitle>
+                <CardDescription className="text-gray-600">Uluslararası deneyim</CardDescription>
+              </CardHeader>
+              <CardContent className="flex-1 flex flex-col">
+                <ul className="space-y-2 flex-1 text-sm">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    <span>Bireysel & Ticari Kasko</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    <span>Sağlık Sigortaları</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    <span>Konut & DASK</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    <span>Ferdi Kaza & Seyahat</span>
+                  </li>
+                </ul>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button className="w-full mt-6 bg-green-600 hover:bg-green-700 rounded-lg">Detayları İncele</Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                    <DialogHeader>
+                      <DialogTitle className="text-2xl text-green-600">Sompo Sigorta Hizmetleri</DialogTitle>
+                      <DialogDescription>Sompo Sigorta'nın sunduğu tüm sigorta ürünleri ve detayları</DialogDescription>
+                    </DialogHeader>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                      {serviceDetails.sompo.services.map((service) => (
+                        <Card key={service.id} className="border border-gray-200">
+                          <CardHeader className="pb-3">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                                <service.icon className="w-5 h-5 text-green-600" />
+                              </div>
+                              <CardTitle className="text-lg text-green-600">{service.name}</CardTitle>
+                            </div>
+                          </CardHeader>
+                          <CardContent>
+                            <p className="text-sm text-gray-600 mb-3">{service.description}</p>
+                            <p className="text-sm text-gray-700 mb-3">{service.details}</p>
+                            <div className="space-y-1">
+                              {service.features.map((feature, index) => (
+                                <div key={index} className="flex items-center gap-2">
+                                  <CheckCircle className="w-3 h-3 text-green-500" />
+                                  <span className="text-xs text-gray-600">{feature}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </CardContent>
+                        </Card>
+                      ))}
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              </CardContent>
+            </Card>
             {/* Hepiyi Services */}
             <Card className="group hover:shadow-xl transition-all duration-300 border border-gray-200 shadow-lg hover:scale-105 bg-white flex flex-col h-full">
               <CardHeader className="text-center pb-4">
@@ -644,79 +718,7 @@ export default function KGSInsurancePage() {
               </CardContent>
             </Card>
 
-            {/* Sompo Services */}
-            <Card className="group hover:shadow-xl transition-all duration-300 border border-gray-200 shadow-lg hover:scale-105 bg-white flex flex-col h-full">
-              <CardHeader className="text-center pb-4">
-                <div className="mx-auto w-20 h-16 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Image
-                    src="/images/sompo-logo.png"
-                    alt="Sompo Sigorta Logo"
-                    width={80}
-                    height={64}
-                    className="max-w-full max-h-full object-contain"
-                  />
-                </div>
-                <CardTitle className="text-2xl text-[#0a2d5f]">Sompo Sigortaları</CardTitle>
-                <CardDescription className="text-gray-600">Uluslararası deneyim</CardDescription>
-              </CardHeader>
-              <CardContent className="flex-1 flex flex-col">
-                <ul className="space-y-2 flex-1 text-sm">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-500" />
-                    <span>Bireysel & Ticari Kasko</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-500" />
-                    <span>Sağlık Sigortaları</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-500" />
-                    <span>Konut & DASK</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-500" />
-                    <span>Ferdi Kaza & Seyahat</span>
-                  </li>
-                </ul>
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button className="w-full mt-6 bg-green-600 hover:bg-green-700 rounded-lg">Detayları İncele</Button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                    <DialogHeader>
-                      <DialogTitle className="text-2xl text-green-600">Sompo Sigorta Hizmetleri</DialogTitle>
-                      <DialogDescription>Sompo Sigorta'nın sunduğu tüm sigorta ürünleri ve detayları</DialogDescription>
-                    </DialogHeader>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                      {serviceDetails.sompo.services.map((service) => (
-                        <Card key={service.id} className="border border-gray-200">
-                          <CardHeader className="pb-3">
-                            <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                                <service.icon className="w-5 h-5 text-green-600" />
-                              </div>
-                              <CardTitle className="text-lg text-green-600">{service.name}</CardTitle>
-                            </div>
-                          </CardHeader>
-                          <CardContent>
-                            <p className="text-sm text-gray-600 mb-3">{service.description}</p>
-                            <p className="text-sm text-gray-700 mb-3">{service.details}</p>
-                            <div className="space-y-1">
-                              {service.features.map((feature, index) => (
-                                <div key={index} className="flex items-center gap-2">
-                                  <CheckCircle className="w-3 h-3 text-green-500" />
-                                  <span className="text-xs text-gray-600">{feature}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </div>
-                  </DialogContent>
-                </Dialog>
-              </CardContent>
-            </Card>
+            
           </div>
         </div>
       </section>
@@ -1204,7 +1206,7 @@ export default function KGSInsurancePage() {
 
           <div className="border-t border-white/20 mt-12 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-blue-200 text-sm">© 2024 KGS Sigorta. Tüm hakları saklıdır.</p>
+              <p className="text-blue-200 text-sm">{new Date().getFullYear()} KGS Sigorta. Tüm hakları saklıdır.</p>
               <div className="flex gap-6 text-sm">
                 <Link href="#" className="text-blue-200 hover:text-white transition-colors">
                   KVKK Metni
