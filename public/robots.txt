@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.kgssigorta.com
+
+# Sitemaps
+Sitemap: https://www.kgssigorta.com/sitemap.xml
