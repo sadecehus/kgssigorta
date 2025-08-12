@@ -474,7 +474,7 @@ export default function KGSInsurancePage() {
             </div>
             <div className="text-center bg-white rounded-lg p-6 shadow-md border border-gray-100">
               <Building2 className="w-8 h-8 text-[#0a2d5f] mx-auto mb-2" />
-              <div className="text-3xl font-bold text-[#0a2d5f]">3</div>
+              <div className="text-3xl font-bold text-[#0a2d5f]">2</div>
               <div className="text-sm text-gray-600">Partner Sigorta Şirketi</div>
             </div>
             <div className="text-center bg-white rounded-lg p-6 shadow-md border border-gray-100">
@@ -1143,7 +1143,7 @@ export default function KGSInsurancePage() {
                 />
               </div>
               <p className="text-blue-100 mb-6 max-w-md">
-                Hepiyi, Orient ve Sompo Sigorta ile çalışarak müşterilerimize en uygun sigorta çözümlerini sunuyoruz.
+                Hepiyi ve Sompo Sigorta ile çalışarak müşterilerimize en uygun sigorta çözümlerini sunuyoruz.
                 İzmit Kocaeli'de güvenilir hizmet.
               </p>
          
