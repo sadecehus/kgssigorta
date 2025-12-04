@@ -273,7 +273,7 @@ const getEmailTemplate = (formData: any) => {
           </div>
           
           <p class="message">
-            <strong>Partner şirketlerimiz:</strong> Hepiyi Sigorta, Orient Sigorta ve Sompo Sigorta ile çalışarak 
+            <strong>Partner şirketlerimiz:</strong> Hepiyi Sigorta, Doğa Sigorta ve Sompo Sigorta ile çalışarak 
             size en avantajlı teklifleri sunuyoruz.
           </p>
         </div>

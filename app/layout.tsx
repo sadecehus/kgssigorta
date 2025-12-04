@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "KGS Sigorta - İzmit Kocaeli'nin güvenilir sigorta aracısı. , Türkiye'nin en iyi Sigorta şirketleri ile çalışarak size en uygun teklifi sunuyoruz. Araç, sağlık ve konut sigortaları için hemen teklif alın.",
   keywords:
-    "KGS Sigorta, İzmit sigorta, Kocaeli sigorta, kasko, trafik, sağlık sigortası, konut sigortası, DASK, sigorta aracısı, Hepiyi, Orient, Sompo",
+    "KGS Sigorta, İzmit sigorta, Kocaeli sigorta, kasko, trafik, sağlık sigortası, konut sigortası, DASK, sigorta aracısı, Hepiyi, Doğa, Sompo",
   openGraph: {
     title: "KGS SİGORTA – İzmit Kocaeli'nin Güvenilir Sigorta Aracısı",
     description: "Araç, sağlık ve konut sigortalarında uzman ekibimizle size en uygun çözümleri sunuyoruz.",
