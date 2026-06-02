@@ -75,9 +75,9 @@ export default function Footer({ scrollToSection }: FooterProps) {
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-1" />
                 <span>
-                  Mehmet Ali Paşa Mah. Erkan sok.
+                  TADU BLACK OFFICE, Körfez
                   <br />
-                  RBG İş Merkezi no:7/7 İzmit/Kocaeli
+                  ANKARA YOLU CADDESİ NO:12 41060 İzmit/Kocaeli
                 </span>
               </li>
             </ul>

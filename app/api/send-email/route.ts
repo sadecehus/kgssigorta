@@ -268,7 +268,7 @@ const getEmailTemplate = (formData: any) => {
             </div>
             <div class="contact-item">
               <span class="contact-icon">📍</span>
-              <span><strong>Adres:</strong> RBG İş Merkezi, Mehmet Ali Paşa Mah. Erkan sok. no:7/7 İzmit/Kocaeli</span>
+              <span><strong>Adres:</strong> TADU BLACK OFFICE, Körfez, ANKARA YOLU CADDESİ NO:12 41060 İzmit/Kocaeli</span>
             </div>
           </div>
           

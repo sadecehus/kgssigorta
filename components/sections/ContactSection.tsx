@@ -274,9 +274,9 @@ export default function ContactSection() {
                   <div>
                     <h3 className="font-semibold text-[#0a2d5f]">Adres</h3>
                     <p className="text-gray-600">
-                      Mehmet Ali Paşa Mah. Erkan sok.
+                      TADU BLACK OFFICE, Körfez
                       <br />
-                      RBG İş Merkezi no:7/7 İzmit/Kocaeli
+                      ANKARA YOLU CADDESİ NO:12 41060 İzmit/Kocaeli
                     </p>
                   </div>
                 </div>
